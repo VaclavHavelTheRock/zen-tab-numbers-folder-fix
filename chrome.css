@@ -8,9 +8,12 @@ hbox.zen-essentials-container:not([hidden="true"]) tab:not([zen-glance-tab="true
 zen-workspace[active] tab:not([zen-glance-tab="true"]) {
   counter-increment: tab-counter;
 }
-/* Stop counting tabs inside collapsed folders, except the folder's active tab */
-zen-folder:has(.tab-group-label[aria-expanded="false"]) tab:not([folder-active="true"]) {
-  counter-increment: none;
+/* Don't count tabs Zen's Ctrl+number skips (mirrors Zen's tab.visible): tabs in a
+   collapsed folder, and pinned tabs while the space's pinned section is collapsed.
+   Selected and folder-active tabs stay shown, so they keep their number. */
+:is(zen-folder, tab-group)[collapsed] tab:not([selected], [multiselected], [folder-active]),
+zen-workspace[collapsedpinnedtabs] tab[pinned]:not([zen-essential], [selected], [multiselected], [folder-active]) {
+  counter-increment: none !important;
 } /* Styles when the sidebar is expanded */
 @media (-moz-bool-pref: "zen.view.sidebar-expanded") {
   tab:not([zen-glance-tab="true"]) > .tab-stack > .tab-content::after {
@@ -71,7 +74,7 @@ zen-folder:has(.tab-group-label[aria-expanded="false"]) tab:not([folder-active="
   }
 
   /* Put tab numbers on the left side when expanded_side="Left" (AND in expanded mode) */
-  :root:has(#theme-Tab-Numbers[uc-theme-expanded_side="Left"]) {
+  :root:has(#theme-Tab-Numbers-Synced[uc-theme-expanded_side="Left"]) {
     tab:not([zen-glance-tab="true"]) > .tab-stack > .tab-content::after {
       display: none; /* Hide the ::after pseudo-element first */
     }
@@ -113,7 +116,7 @@ zen-folder:has(.tab-group-label[aria-expanded="false"]) tab:not([folder-active="
     font-size: var(--font_size, 80%); /* Default font size (same as "Small") */
     color: var(--number_color, inherit); /* Fallback to default color */
   } /* Put tab numbers on the left side when compact_side="Left" (AND in compact mode) */
-  :root:has(#theme-Tab-Numbers[uc-theme-compact_side="Left"]) {
+  :root:has(#theme-Tab-Numbers-Synced[uc-theme-compact_side="Left"]) {
     tab:not([zen-glance-tab="true"]) > .tab-stack > .tab-content::before {
       content: counter(tab-counter) "";
       position: absolute;
@@ -143,36 +146,36 @@ zen-folder:has(.tab-group-label[aria-expanded="false"]) tab:not([folder-active="
     ) !important;
   }
 } /* Set font size for Extra Small (Override default) */
-:root:has(#theme-Tab-Numbers[uc-theme-font_size="XSmall"]) {
+:root:has(#theme-Tab-Numbers-Synced[uc-theme-font_size="XSmall"]) {
   --font_size: 70% !important; /* Extra Small font size */
 } /* Set font size for Small */
-:root:has(#theme-Tab-Numbers[uc-theme-font_size="Small"]) {
+:root:has(#theme-Tab-Numbers-Synced[uc-theme-font_size="Small"]) {
   --font_size: 80% !important; /* Small font size */
 } /* Set font size for Medium (Override default) */
-:root:has(#theme-Tab-Numbers[uc-theme-font_size="Medium"]) {
+:root:has(#theme-Tab-Numbers-Synced[uc-theme-font_size="Medium"]) {
   --font_size: 90% !important; /* Medium font size */
 } /* Set font size for Large (Override default) */
-:root:has(#theme-Tab-Numbers[uc-theme-font_size="Large"]) {
+:root:has(#theme-Tab-Numbers-Synced[uc-theme-font_size="Large"]) {
   --font_size: 100% !important; /* Large font size */
 } /* Set font size for Extra Large (Override default) */
-:root:has(#theme-Tab-Numbers[uc-theme-font_size="XLarge"]) {
+:root:has(#theme-Tab-Numbers-Synced[uc-theme-font_size="XLarge"]) {
   --font_size: 120% !important; /* Extra Large font size */
 } /* Ensure Close X button is on top of everything. */
 .tab-close-button {
   z-index: 10;
 } /* Customize the shape based on the preference values */
-:root:has(#theme-Tab-Numbers[uc-theme-background_shape="Square"]) {
+:root:has(#theme-Tab-Numbers-Synced[uc-theme-background_shape="Square"]) {
   --background_shape: 0%; /* Square */
 }
-:root:has(#theme-Tab-Numbers[uc-theme-background_shape="SlightlyRounded"]) {
+:root:has(#theme-Tab-Numbers-Synced[uc-theme-background_shape="SlightlyRounded"]) {
   --background_shape: 5%; /* Slightly Rounded Square */
 }
-:root:has(#theme-Tab-Numbers[uc-theme-background_shape="ModeratelyRounded"]) {
+:root:has(#theme-Tab-Numbers-Synced[uc-theme-background_shape="ModeratelyRounded"]) {
   --background_shape: 15%; /* Moderately Rounded Square */
 }
-:root:has(#theme-Tab-Numbers[uc-theme-background_shape="FullyRounded"]) {
+:root:has(#theme-Tab-Numbers-Synced[uc-theme-background_shape="FullyRounded"]) {
   --background_shape: 30%; /* Fully Rounded Square */
 }
-:root:has(#theme-Tab-Numbers[uc-theme-background_shape="Circle"]) {
+:root:has(#theme-Tab-Numbers-Synced[uc-theme-background_shape="Circle"]) {
   --background_shape: 50%; /* Perfect Circle */
 }

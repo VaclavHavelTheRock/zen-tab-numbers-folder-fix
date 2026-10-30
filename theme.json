@@ -1,17 +1,10 @@
 {
-  "id": "22c9ec3b-7c62-46ae-991f-c8fff5046829",
-  "name": "Tab Numbers",
-  "description": "Shows the Number corresponding to each Tab.",
-  "homepage": "https://github.com/philmard/tab-numbers",
-  "style": "https://raw.githubusercontent.com/zen-browser/theme-store/main/themes/22c9ec3b-7c62-46ae-991f-c8fff5046829/chrome.css",
-  "readme": "https://raw.githubusercontent.com/zen-browser/theme-store/main/themes/22c9ec3b-7c62-46ae-991f-c8fff5046829/readme.md",
-  "image": "https://raw.githubusercontent.com/zen-browser/theme-store/main/themes/22c9ec3b-7c62-46ae-991f-c8fff5046829/image.png",
-  "author": "philmard",
-  "version": "1.0.9",
-  "preferences": "https://raw.githubusercontent.com/zen-browser/theme-store/main/themes/22c9ec3b-7c62-46ae-991f-c8fff5046829/preferences.json",
+  "name": "Tab Numbers Synced",
+  "description": "Numbers each tab with its Ctrl+number shortcut, staying in sync with collapsed folders.",
+  "homepage": "https://github.com/VaclavHavelTheRock/zen-tab-numbers-folder-fix",
+  "author": "VaclavHavelTheRock",
+  "version": "1.0.0",
   "tags": [
     "tabs"
-  ],
-  "createdAt": "2024-11-09",
-  "updatedAt": "2024-12-07"
+  ]
 }
